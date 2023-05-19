@@ -1,15 +1,13 @@
 [tool.poetry]
 name = "python-template"
 version = "0.1.0"
-description = ""
+description = "A tool for scraping info from Wikipedia"
 authors = ["peaky76 <robertjamespeacock@gmail.com>"]
 license = "GPL-3.0-only"
 readme = "README.md"
-packages = [{include = "python_template"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
-
 
 [tool.poetry.group.dev.dependencies]
 auto-changelog = "^0.6.0"
