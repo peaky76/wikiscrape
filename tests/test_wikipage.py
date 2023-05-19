@@ -1,6 +1,14 @@
 from wikiscrape import Wikipage
 
 
+def test_wikipage_eq_true():
+    assert Wikipage("Joe Bloggs") == Wikipage("Joe Bloggs")
+
+
+def test_wikipage_eq_false():
+    assert Wikipage("Joe Bloggs") != Wikipage("Jane Doe")
+
+
 def test_wikipage_abs_url():
     assert Wikipage("Joe Bloggs").abs_url == "https://en.wikipedia.org/wiki/Joe_Bloggs"
 
