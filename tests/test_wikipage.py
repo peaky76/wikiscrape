@@ -1,3 +1,5 @@
+import pytest
+import requests
 from wikiscrape import Wikipage
 
 
@@ -46,6 +48,13 @@ def test_wikipage_is_redlink_false():
 
 def test_wikipage_subject():
     assert Wikipage("Joe Bloggs (jockey)").subject == "Joe Bloggs"
+
+
+def test_wikipage_text(requests_mock):
+    requests_mock.get(
+        "https://en.wikipedia.org/wiki/Joe_Bloggs", text="<!DOCTYPE html>..."
+    )
+    assert Wikipage("Joe Bloggs").text.startswith("<!DOCTYPE html>")
 
 
 def test_wikipage_to_link():
