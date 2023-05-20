@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.1 (2023-05-20)
+
+#### Others
+
+- remove unneeded imports
+
 ## 0.2.0 (2023-05-20)
 
 #### New Features
