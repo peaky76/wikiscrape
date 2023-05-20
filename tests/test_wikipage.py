@@ -44,8 +44,8 @@ def test_wikipage_is_redlink_false():
     assert not Wikipage("Joe Bloggs").is_redlink
 
 
-def test_wikipage_derive_subject():
-    assert Wikipage("Joe Bloggs (jockey)").derive_subject() == "Joe Bloggs"
+def test_wikipage_subject():
+    assert Wikipage("Joe Bloggs (jockey)").subject == "Joe Bloggs"
 
 
 def test_wikipage_to_link():

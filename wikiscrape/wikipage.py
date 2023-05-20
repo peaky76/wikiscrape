@@ -29,7 +29,8 @@ class Wikipage:
     def is_redlink(self):
         return "not exist" in self.title
 
-    def derive_subject(self):
+    @property
+    def subject(self):
         return self.title.split(" (")[0]
 
     def to_link(self, alias=None):
