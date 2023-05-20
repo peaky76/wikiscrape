@@ -1,3 +1,4 @@
+from bs4 import BeautifulSoup
 import pytest
 import requests
 from wikiscrape import Wikipage
@@ -44,6 +45,13 @@ def test_wikipage_is_redlink_true():
 
 def test_wikipage_is_redlink_false():
     assert not Wikipage("Joe Bloggs").is_redlink
+
+
+def test_wikipage_soup(requests_mock):
+    requests_mock.get(
+        "https://en.wikipedia.org/wiki/Joe_Bloggs", text="<!DOCTYPE html>..."
+    )
+    assert isinstance(Wikipage("Joe Bloggs").soup, BeautifulSoup)
 
 
 def test_wikipage_subject():

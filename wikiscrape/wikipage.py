@@ -1,4 +1,5 @@
 import requests
+from bs4 import BeautifulSoup
 from .markdown import Markdown as md
 
 
@@ -29,6 +30,10 @@ class Wikipage:
     @property
     def is_redlink(self):
         return "not exist" in self.title
+
+    @property
+    def soup(self):
+        return BeautifulSoup(self.text, "html.parser")
 
     @property
     def subject(self):
