@@ -1,3 +1,4 @@
+import requests
 from .markdown import Markdown as md
 
 
@@ -32,6 +33,10 @@ class Wikipage:
     @property
     def subject(self):
         return self.title.split(" (")[0]
+
+    @property
+    def text(self):
+        return requests.get(self.abs_url).text
 
     def to_link(self, alias=None):
         return md.a(self.title) if not alias else md.a(self.title, alias)
