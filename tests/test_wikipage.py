@@ -1,6 +1,4 @@
 from bs4 import BeautifulSoup
-import pytest
-import requests
 from wikiscrape import Wikipage
 
 
