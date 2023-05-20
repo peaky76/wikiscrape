@@ -20,6 +20,7 @@ pytest-cov = "^4.0.0"
 ruff = "^0.0.267"
 sphinx = "^6.2.1"
 sphinx-rtd-theme = "^1.2.0"
+requests-mock = "^1.10.0"
 
 [build-system]
 requires = ["poetry-core"]
