@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.2 (2023-07-24)
+
+#### Others
+
+- add bs4 and requests types
+
 ## 0.2.1 (2023-05-20)
 
 #### Others
