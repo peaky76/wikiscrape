@@ -14,4 +14,5 @@ class Wikitable:
         return [
             [td.text.strip() for td in tr.find_all("td")]
             for tr in self.table.find_all("tr")
+            if not tr.th
         ]
