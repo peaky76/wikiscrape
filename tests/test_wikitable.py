@@ -11,6 +11,7 @@ def test_wikitable_headers():
 def test_wikitable_data():
     html = """
         <table>
+            <tr><th>Header 1</th><th>Header 2</th></tr>
             <tr><td>Data A1</td><td>Data A2</td></tr>
             <tr><td>Data B1</td><td>Data B2</td></tr>
         </table>
