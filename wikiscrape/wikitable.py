@@ -16,3 +16,6 @@ class Wikitable:
             for tr in self.table.find_all("tr")
             if not tr.th
         ]
+
+    def to_json(self):
+        return [dict(zip(self.headers, row)) for row in self.data]
