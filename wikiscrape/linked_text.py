@@ -4,7 +4,8 @@ class LinkedText:
 
     @property
     def link(self):
-        return link["href"] if (link := self.content.a) else None
+        anchor = self.content.a
+        return anchor["href"] if anchor else None
 
     @property
     def text(self):
