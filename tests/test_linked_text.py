@@ -23,3 +23,13 @@ def test_linked_text_link_with_link():
 def test_linked_text_link_without_link():
     soup = BeautifulSoup(TEXT_ONLY, "html.parser")
     assert LinkedText(soup).link == None
+
+
+def test_linked_text_text_with_link():
+    soup = BeautifulSoup(LINK_AND_TEXT, "html.parser")
+    assert LinkedText(soup).text == "Foobar"
+
+
+def test_linked_text_text_without_link():
+    soup = BeautifulSoup(TEXT_ONLY, "html.parser")
+    assert LinkedText(soup).text == "Foobar"
