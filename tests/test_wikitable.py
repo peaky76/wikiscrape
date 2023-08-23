@@ -20,7 +20,7 @@ def test_wikitable_data():
     assert Wikitable(table).data == [["Data A1", "Data A2"], ["Data B1", "Data B2"]]
 
 
-def test_wikitable_to_json():
+def test_wikitable_to_dicts():
     html = """
         <table>
             <tr><th>Header 1</th><th>Header 2</th></tr>
@@ -31,7 +31,7 @@ def test_wikitable_to_json():
     table = BeautifulSoup(html, "html.parser").table
     assert Wikitable(table).headers == ["Header 1", "Header 2"]
     assert Wikitable(table).data == [["Data A1", "Data A2"], ["Data B1", "Data B2"]]
-    assert Wikitable(table).to_json() == [
+    assert Wikitable(table).to_dicts() == [
         {"Header 1": "Data A1", "Header 2": "Data A2"},
         {"Header 1": "Data B1", "Header 2": "Data B2"},
     ]

@@ -17,5 +17,5 @@ class Wikitable:
             if not tr.th
         ]
 
-    def to_json(self):
+    def to_dicts(self):
         return [dict(zip(self.headers, row)) for row in self.data]
