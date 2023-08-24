@@ -15,6 +15,16 @@ def test_linked_text_init_without_link():
     assert LinkedText(soup)
 
 
+def test_linked_text_repr_with_link():
+    soup = BeautifulSoup(LINK_AND_TEXT, "html.parser")
+    assert repr(LinkedText(soup)) == "<LinkedText: Foobar (https://www.alink.com)>"
+
+
+def test_linked_text_repr_without_link():
+    soup = BeautifulSoup(TEXT_ONLY, "html.parser")
+    assert repr(LinkedText(soup)) == "<LinkedText: Foobar (None)>"
+
+
 def test_linked_text_link_with_link():
     soup = BeautifulSoup(LINK_AND_TEXT, "html.parser")
     assert LinkedText(soup).link == "https://www.alink.com"
