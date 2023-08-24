@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3.0 (2023-08-24)
+
+#### New Features
+
+- create `LinkedText` class
+- create `Wikitable` class
+
 ## 0.2.2 (2023-07-24)
 
 #### Others
