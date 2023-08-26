@@ -5,6 +5,9 @@ HTML = """
         <table class="infobox">
             <tbody>
                 <tr>
+                    <img src="https://johndoe.com/johndoe.jpg" />
+                </tr>
+                <tr>
                     <th>Name</th>
                     <td>John Doe</td>
                 </tr>
