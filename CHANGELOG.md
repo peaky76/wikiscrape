@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.4.0 (2023-08-26)
+
+#### New Features
+
+- create `Infobox` class
+- add `LinkedText.__repr__`
+
+#### Others
+
+- typing
+- refactor `LinkedText` tests
+
 ## 0.3.0 (2023-08-24)
 
 #### New Features
