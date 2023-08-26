@@ -4,44 +4,44 @@ from .markdown import Markdown as md
 
 
 class Wikipage:
-    def __init__(self, title):
+    def __init__(self, title: str):
         self.title = title
 
     def __eq__(self, other):
         return self.title == other.title
 
     @property
-    def abs_url(self):
+    def abs_url(self) -> str:
         EN_WIKI = "https://en.wikipedia.org/wiki/"
         return EN_WIKI + self.rel_url
 
     @property
-    def rel_url(self):
+    def rel_url(self) -> str:
         return self.title.replace(" ", "_").replace("'", "%27")
 
     @property
-    def exists(self):
+    def exists(self) -> bool:
         return self.title and not self.is_redlink
 
     @property
-    def is_disambiguated(self):
+    def is_disambiguated(self) -> bool:
         return self.exists and "(" in self.title
 
     @property
-    def is_redlink(self):
+    def is_redlink(self) -> bool:
         return "not exist" in self.title
 
     @property
-    def soup(self):
+    def soup(self) -> BeautifulSoup:
         return BeautifulSoup(self.text, "html.parser")
 
     @property
-    def subject(self):
+    def subject(self) -> str:
         return self.title.split(" (")[0]
 
     @property
-    def text(self):
+    def text(self) -> str:
         return requests.get(self.abs_url).text
 
-    def to_link(self, alias=None):
+    def to_link(self, alias: str | None = None) -> str:
         return md.a(self.title) if not alias else md.a(self.title, alias)
