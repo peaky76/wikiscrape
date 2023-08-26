@@ -1,45 +1,40 @@
 from bs4 import BeautifulSoup
 from wikiscrape import LinkedText
 
-LINK_AND_TEXT = "<a href='https://www.alink.com'>Foobar</a>"
-TEXT_ONLY = "Foobar"
+LINK_AND_TEXT = BeautifulSoup(
+    "<a href='https://www.alink.com'>Foobar</a>", "html.parser"
+)
+TEXT_ONLY = BeautifulSoup("Foobar", "html.parser")
 
 
 def test_linked_text_init_with_link():
-    soup = BeautifulSoup(LINK_AND_TEXT, "html.parser")
-    assert LinkedText(soup)
+    assert LinkedText(LINK_AND_TEXT)
 
 
 def test_linked_text_init_without_link():
-    soup = BeautifulSoup(TEXT_ONLY, "html.parser")
-    assert LinkedText(soup)
+    assert LinkedText(TEXT_ONLY)
 
 
 def test_linked_text_repr_with_link():
-    soup = BeautifulSoup(LINK_AND_TEXT, "html.parser")
-    assert repr(LinkedText(soup)) == "<LinkedText: Foobar (https://www.alink.com)>"
+    expected = "<LinkedText: Foobar (https://www.alink.com)>"
+    assert repr(LinkedText(LINK_AND_TEXT)) == expected
 
 
 def test_linked_text_repr_without_link():
-    soup = BeautifulSoup(TEXT_ONLY, "html.parser")
-    assert repr(LinkedText(soup)) == "<LinkedText: Foobar (None)>"
+    assert repr(LinkedText(TEXT_ONLY)) == "<LinkedText: Foobar (None)>"
 
 
 def test_linked_text_link_with_link():
-    soup = BeautifulSoup(LINK_AND_TEXT, "html.parser")
-    assert LinkedText(soup).link == "https://www.alink.com"
+    assert LinkedText(LINK_AND_TEXT).link == "https://www.alink.com"
 
 
 def test_linked_text_link_without_link():
-    soup = BeautifulSoup(TEXT_ONLY, "html.parser")
-    assert LinkedText(soup).link == None
+    assert LinkedText(TEXT_ONLY).link == None
 
 
 def test_linked_text_text_with_link():
-    soup = BeautifulSoup(LINK_AND_TEXT, "html.parser")
-    assert LinkedText(soup).text == "Foobar"
+    assert LinkedText(LINK_AND_TEXT).text == "Foobar"
 
 
 def test_linked_text_text_without_link():
-    soup = BeautifulSoup(TEXT_ONLY, "html.parser")
-    assert LinkedText(soup).text == "Foobar"
+    assert LinkedText(TEXT_ONLY).text == "Foobar"
