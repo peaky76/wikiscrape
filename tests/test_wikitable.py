@@ -32,6 +32,22 @@ def test_wikitable_data_handles_links():
     assert Wikitable(table).data[0][0]["href"] == "http://www.dataa1.com"
 
 
+def test_wikitable_data_handles_multiple_elements():
+    html = """
+        <table>
+            <tr><th>Header 1</th><th>Header 2</th></tr>
+            <tr><td><a href='http://www.dataa1.com'>Data A1</a> <a href='http://www.dataaa1.com'>Data AA1</a></td><td>Data A2</td></tr>
+            <tr><td>Data B1</td><td><a href='http://www.datab2.com'>Data B2</a></td></tr>
+        </table>
+    """
+    table = BeautifulSoup(html, "html.parser").table
+    expected = BeautifulSoup(
+        "<a href='http://www.dataa1.com'>Data A1</a> <a href='http://www.dataaa1.com'>Data AA1</a>",
+        "html.parser",
+    ).contents[0]
+    assert Wikitable(table).data[0][0] == expected
+
+
 def test_wikitable_to_dicts():
     html = """
         <table>
