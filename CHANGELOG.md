@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.1 (2023-08-26)
+
+#### Fixes
+
+- exclude rows from `Infobox` data if no headers present
+
 ## 0.4.0 (2023-08-26)
 
 #### New Features
