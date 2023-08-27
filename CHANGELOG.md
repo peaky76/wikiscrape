@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.4.2 (2023-08-27)
+
+#### Fixes
+
+- `Infobox.data` handles multiple elements
+- `Wikitable.data` handles multiple elements
+
 ## 0.4.1 (2023-08-26)
 
 #### Fixes
