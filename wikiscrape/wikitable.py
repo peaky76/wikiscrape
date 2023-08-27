@@ -12,7 +12,12 @@ class Wikitable:
     @property
     def data(self) -> list[list[BeautifulSoup]]:
         return [
-            [td.contents[0] for td in tr.find_all("td")]
+            [
+                td.contents[0]
+                if len(td.contents) == 1
+                else BeautifulSoup("".join(str(x) for x in td.contents), "html.parser")
+                for td in tr.find_all("td")
+            ]
             for tr in self.table.find_all("tr")
             if not tr.th
         ]

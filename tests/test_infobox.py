@@ -37,7 +37,7 @@ def test_infobox_data():
         BeautifulSoup(
             "<a href='https://johndoe.com'>johndoe.com</a> and <a href='https://anothersite.com'>anothersite.com</a>",
             "html.parser",
-        ).contents[0],
+        ),
     ]
 
 
@@ -49,6 +49,6 @@ def test_infobox_to_dicts():
             "Websites": BeautifulSoup(
                 "<a href='https://johndoe.com'>johndoe.com</a> and <a href='https://anothersite.com'>anothersite.com</a>",
                 "html.parser",
-            ).contents[0],
+            ),
         }
     ]
