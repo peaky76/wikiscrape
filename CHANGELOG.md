@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.3 (2023-08-27)
+
+#### Fixes
+
+- tidy `Wikitable.headers`
+
 ## 0.4.2 (2023-08-27)
 
 #### Fixes
