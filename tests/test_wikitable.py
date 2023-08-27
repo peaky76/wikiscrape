@@ -44,7 +44,7 @@ def test_wikitable_data_handles_multiple_elements():
     expected = BeautifulSoup(
         "<a href='http://www.dataa1.com'>Data A1</a> <a href='http://www.dataaa1.com'>Data AA1</a>",
         "html.parser",
-    ).contents[0]
+    )
     assert Wikitable(table).data[0][0] == expected
 
 
