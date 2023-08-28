@@ -10,6 +10,16 @@ def test_wikipage_eq_false():
     assert Wikipage("Joe Bloggs") != Wikipage("Jane Doe")
 
 
+def test_wikipage_from_abs_url():
+    abs_url = "https://en.wikipedia.org/wiki/Joe_Bloggs"
+    assert Wikipage.from_url(abs_url) == Wikipage("Joe Bloggs")
+
+
+def test_wikipage_from_rel_url():
+    rel_url = "/wiki/Joe_Bloggs"
+    assert Wikipage.from_url(rel_url) == Wikipage("Joe Bloggs")
+
+
 def test_wikipage_abs_url():
     assert Wikipage("Joe Bloggs").abs_url == "https://en.wikipedia.org/wiki/Joe_Bloggs"
 
