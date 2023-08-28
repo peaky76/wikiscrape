@@ -7,7 +7,10 @@ class Wikitable:
 
     @property
     def headers(self) -> list[BeautifulSoup]:
-        return [th.contents[0].text.strip() for th in self.table.find_all("th")]
+        return [
+            next(el.text.strip() for el in th.contents if el.text.strip())
+            for th in self.table.find_all("th")
+        ]
 
     @property
     def data(self) -> list[list[BeautifulSoup]]:
