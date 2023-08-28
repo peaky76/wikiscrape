@@ -29,7 +29,7 @@ def test_linked_text_link_with_link():
 
 
 def test_linked_text_link_without_link():
-    assert LinkedText(TEXT_ONLY).link == None
+    assert LinkedText(TEXT_ONLY).link is None
 
 
 def test_linked_text_text_with_link():
