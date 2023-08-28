@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.5.1 (2023-08-28)
+
+#### Fixes
+
+- filter out null first elements in `Wikitable.headers`
+
+#### Others
+
+- ruff ignore E501
+
 ## 0.5.0 (2023-08-28)
 
 #### New Features
