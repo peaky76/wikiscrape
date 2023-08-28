@@ -25,7 +25,7 @@ class Wikipage:
 
     @property
     def exists(self) -> bool:
-        return self.title and not self.is_redlink
+        return bool(self.title) and not self.is_redlink
 
     @property
     def is_disambiguated(self) -> bool:
