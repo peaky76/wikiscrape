@@ -8,7 +8,13 @@ def test_wikitable_headers():
     assert Wikitable(table).headers == ["Header 1", "Header 2"]
 
 
-def test_wikitable_headers_with_new_lines():
+def test_wikitable_headers_with_new_lines_at_beginning():
+    html = "<table><tr><th>\n<span>Header 1</span></th><th>Header 2</th></tr></table>"
+    table = BeautifulSoup(html, "html.parser").table
+    assert Wikitable(table).headers == ["Header 1", "Header 2"]
+
+
+def test_wikitable_headers_with_new_lines_at_end():
     html = "<table><tr><th>Header 1</th><th>Header 2\n</th></tr></table>"
     table = BeautifulSoup(html, "html.parser").table
     assert Wikitable(table).headers == ["Header 1", "Header 2"]
