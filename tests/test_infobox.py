@@ -32,12 +32,14 @@ def test_infobox_headers():
 
 def test_infobox_data():
     assert Infobox(TABLE).data == [
-        "John Doe",
-        "1 August 1950",
-        BeautifulSoup(
-            "<a href='https://johndoe.com'>johndoe.com</a> and <a href='https://anothersite.com'>anothersite.com</a>",
-            "html.parser",
-        ),
+        [
+            "John Doe",
+            "1 August 1950",
+            BeautifulSoup(
+                "<a href='https://johndoe.com'>johndoe.com</a> and <a href='https://anothersite.com'>anothersite.com</a>",
+                "html.parser",
+            ),
+        ]
     ]
 
 
