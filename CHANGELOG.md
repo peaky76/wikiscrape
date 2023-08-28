@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.0 (2023-08-28)
+
+#### New Features
+
+- `Wikipage.from_url`
+
 ## 0.4.3 (2023-08-27)
 
 #### Fixes
