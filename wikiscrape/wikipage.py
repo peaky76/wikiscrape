@@ -10,6 +10,10 @@ class Wikipage:
     def __eq__(self, other):
         return self.title == other.title
 
+    @classmethod
+    def from_url(cls, url: str):
+        return cls(url.split("/")[-1].replace("_", " ").replace("%27", "'"))
+
     @property
     def abs_url(self) -> str:
         EN_WIKI = "https://en.wikipedia.org/wiki/"
