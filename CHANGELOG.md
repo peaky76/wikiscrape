@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.5.3 (2023-09-03)
+
+#### Fixes
+
+- remove footnotes from `Wikitable.data`
+
+#### Refactorings
+
+- `remove_footnotes` helper
+
 ## 0.5.2 (2023-09-03)
 
 #### Fixes
