@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.5.2 (2023-09-03)
+
+#### Fixes
+
+- handle `NavigableString` case in `LinkedText`
+
+#### Refactorings
+
+- typing fix in `Infobox.data`
+- typing fix in `Wikipage.exists`
+
 ## 0.5.1 (2023-08-28)
 
 #### Fixes
