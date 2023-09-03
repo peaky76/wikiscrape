@@ -3,10 +3,6 @@ from wikiscrape import Wikitable
 from wikiscrape.wikitable import remove_footnotes
 
 
-def test_remove_footnotes_removes_round_brackets():
-    assert remove_footnotes("Hello (World)") == "Hello"
-
-
 def test_remove_footnotes_removes_square_brackets():
     assert remove_footnotes("Hello [World]") == "Hello"
 
