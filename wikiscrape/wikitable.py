@@ -34,7 +34,7 @@ class Wikitable:
         return [
             [
                 de_footnoted_soup(str(td.contents[0])).contents[0]
-                if len(td.contents) == 1
+                if len(td.contents) == 1 and bool(str(td.contents[0]).strip())
                 else de_footnoted_soup("".join(str(x) for x in td.contents))
                 for td in tr.find_all("td")
             ]
