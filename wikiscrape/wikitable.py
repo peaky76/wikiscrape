@@ -27,18 +27,15 @@ class Wikitable:
 
     @property
     def data(self) -> list[list[BeautifulSoup]]:
+        de_footnoted_soup = lambda x: BeautifulSoup(
+            remove_footnotes(str(x)), "html.parser"
+        )
+
         return [
             [
-                remove_footnotes(td.contents[0])
-                if len(td.contents) == 1 and isinstance(td.contents[0], NavigableString)
-                else BeautifulSoup(
-                    remove_footnotes(str(td.contents[0])), "html.parser"
-                ).contents[0]
+                de_footnoted_soup(str(td.contents[0])).contents[0]
                 if len(td.contents) == 1
-                else BeautifulSoup(
-                    remove_footnotes("".join(str(x) for x in td.contents)),
-                    "html.parser",
-                )
+                else de_footnoted_soup("".join(str(x) for x in td.contents))
                 for td in tr.find_all("td")
             ]
             for tr in self.table.find_all("tr")
