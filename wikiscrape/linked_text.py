@@ -12,7 +12,7 @@ class LinkedText:
     def link(self):
         if isinstance(self.content, NavigableString):
             return None
-        return (self.content.a or {}).get("href")
+        return (self.content.a or self.content).get("href")
 
     @property
     def text(self):
