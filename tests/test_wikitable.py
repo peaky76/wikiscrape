@@ -1,5 +1,22 @@
 from bs4 import BeautifulSoup
 from wikiscrape import Wikitable
+from wikiscrape.wikitable import remove_footnotes
+
+
+def test_remove_footnotes_removes_round_brackets():
+    assert remove_footnotes("Hello (World)") == "Hello"
+
+
+def test_remove_footnotes_removes_square_brackets():
+    assert remove_footnotes("Hello [World]") == "Hello"
+
+
+def test_remove_footnotes_removes_dagger():
+    assert remove_footnotes("Hello World\u2020") == "Hello World"
+
+
+def test_remove_footnotes_removes_double_dagger():
+    assert remove_footnotes("Hello World\u2021") == "Hello World"
 
 
 def test_wikitable_headers():

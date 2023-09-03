@@ -1,4 +1,15 @@
+import re
 from bs4 import BeautifulSoup
+
+FOOTNOTE = r"(\(|\[)(\w+|\d+)(\]|\))"
+DAGGER = "\u2020"
+DOUBLE_DAGGER = "\u2021"
+
+
+def remove_footnotes(text: str) -> str:
+    return re.sub(
+        FOOTNOTE, "", text.replace(DAGGER, "").replace(DOUBLE_DAGGER, "")
+    ).strip()
 
 
 class Wikitable:
