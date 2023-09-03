@@ -73,6 +73,18 @@ def test_wikitable_data_handles_links():
     assert Wikitable(table).data[0][0]["href"] == "http://www.dataa1.com"
 
 
+def test_wikitable_data_handles_blanks():
+    html = """
+        <table>
+            <tr><th>Header 1</th><th>Header 2</th></tr>
+            <tr><td></td><td>Data A2</td></tr>
+            <tr><td>Data B1</td><td>\n</td></tr>
+        </table>
+    """
+    table = BeautifulSoup(html, "html.parser").table
+    assert Wikitable(table).data
+
+
 def test_wikitable_data_handles_links_with_footnotes():
     html = """
         <table>
