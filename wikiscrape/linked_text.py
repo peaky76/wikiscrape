@@ -1,3 +1,6 @@
+from bs4 import NavigableString
+
+
 class LinkedText:
     def __init__(self, content):
         self.content = content
@@ -7,6 +10,8 @@ class LinkedText:
 
     @property
     def link(self):
+        if isinstance(self.content, NavigableString):
+            return None
         return (self.content.a or {}).get("href")
 
     @property
