@@ -1,5 +1,5 @@
 import re
-from bs4 import BeautifulSoup, NavigableString
+from bs4 import BeautifulSoup
 
 FOOTNOTE = r"(\(|\[)(\w+|\d+)(\]|\))"
 DAGGER = "\u2020"
