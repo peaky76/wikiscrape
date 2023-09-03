@@ -1,5 +1,5 @@
 import re
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, NavigableString
 
 FOOTNOTE = r"(\(|\[)(\w+|\d+)(\]|\))"
 DAGGER = "\u2020"
@@ -19,7 +19,9 @@ class Wikitable:
     @property
     def headers(self) -> list[BeautifulSoup]:
         return [
-            next(el.text.strip() for el in th.contents if el.text.strip())
+            remove_footnotes(
+                next(el.text.strip() for el in th.contents if el.text.strip())
+            )
             for th in self.table.find_all("th")
         ]
 
@@ -27,9 +29,16 @@ class Wikitable:
     def data(self) -> list[list[BeautifulSoup]]:
         return [
             [
-                td.contents[0]
+                remove_footnotes(td.contents[0])
+                if len(td.contents) == 1 and isinstance(td.contents[0], NavigableString)
+                else BeautifulSoup(
+                    remove_footnotes(str(td.contents[0])), "html.parser"
+                ).contents[0]
                 if len(td.contents) == 1
-                else BeautifulSoup("".join(str(x) for x in td.contents), "html.parser")
+                else BeautifulSoup(
+                    remove_footnotes("".join(str(x) for x in td.contents)),
+                    "html.parser",
+                )
                 for td in tr.find_all("td")
             ]
             for tr in self.table.find_all("tr")

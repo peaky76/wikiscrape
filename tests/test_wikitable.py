@@ -49,6 +49,18 @@ def test_wikitable_data():
     assert Wikitable(table).data == [["Data A1", "Data A2"], ["Data B1", "Data B2"]]
 
 
+def test_wikitable_data_handles_footnotes():
+    html = """
+        <table>
+            <tr><th>Header 1[a]</th><th>Header 2</th></tr>
+            <tr><td>Data A1</td><td>Data A2‡</td></tr>
+            <tr><td>Data B1</td><td>Data B2</td></tr>
+        </table>
+    """
+    table = BeautifulSoup(html, "html.parser").table
+    assert Wikitable(table).data == [["Data A1", "Data A2"], ["Data B1", "Data B2"]]
+
+
 def test_wikitable_data_handles_links():
     html = """
         <table>
@@ -59,6 +71,19 @@ def test_wikitable_data_handles_links():
     """
     table = BeautifulSoup(html, "html.parser").table
     assert Wikitable(table).data[0][0]["href"] == "http://www.dataa1.com"
+
+
+def test_wikitable_data_handles_links_with_footnotes():
+    html = """
+        <table>
+            <tr><th>Header 1</th><th>Header 2</th></tr>
+            <tr><td><a href='http://www.dataa1.com'>Data A1‡</a></td><td>Data A2</td></tr>
+            <tr><td>Data B1</td><td><a href='http://www.datab2.com'>Data B2</a></td></tr>
+        </table>
+    """
+    table = BeautifulSoup(html, "html.parser").table
+    assert Wikitable(table).data[0][0]["href"] == "http://www.dataa1.com"
+    assert Wikitable(table).data[0][0].text == "Data A1"
 
 
 def test_wikitable_data_handles_multiple_elements():
