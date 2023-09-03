@@ -57,6 +57,18 @@ def test_wikitable_data_handles_footnotes():
     assert Wikitable(table).data == [["Data A1", "Data A2"], ["Data B1", "Data B2"]]
 
 
+def test_wikitable_data_handles_ampersands():
+    html = """
+        <table>
+            <tr><th>Header 1[a]</th><th>Header 2</th></tr>
+            <tr><td>Data A1</td><td>Data A2&A3</td></tr>
+            <tr><td>Data B1</td><td>Data B2</td></tr>
+        </table>
+    """
+    table = BeautifulSoup(html, "html.parser").table
+    assert Wikitable(table).data == [["Data A1", "Data A2&A3"], ["Data B1", "Data B2"]]
+
+
 def test_wikitable_data_handles_links():
     html = """
         <table>
