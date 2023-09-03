@@ -1,7 +1,7 @@
 import re
 from bs4 import BeautifulSoup
 
-FOOTNOTE = r"(\(|\[)(\w+|\d+)(\]|\))"
+FOOTNOTE = r"(\[)(\w+|\d+)(\])"
 DAGGER = "\u2020"
 DOUBLE_DAGGER = "\u2021"
 
