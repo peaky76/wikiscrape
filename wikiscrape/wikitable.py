@@ -1,4 +1,5 @@
 import re
+import typing
 from bs4 import BeautifulSoup
 
 FOOTNOTE = r"(\[)(\w+|\d+)(\])"
@@ -17,7 +18,7 @@ class Wikitable:
         self.table = table
 
     @property
-    def headers(self) -> list[BeautifulSoup]:
+    def headers(self) -> list[str]:
         return [
             remove_footnotes(
                 next(el.text.strip() for el in th.contents if el.text.strip())
@@ -26,6 +27,7 @@ class Wikitable:
         ]
 
     @property
+    @typing.no_type_check
     def data(self) -> list[list[BeautifulSoup]]:
         de_footnoted_soup = lambda x: BeautifulSoup(
             remove_footnotes(str(x)), "html.parser"
@@ -42,5 +44,5 @@ class Wikitable:
             if not tr.th
         ]
 
-    def to_dicts(self) -> list[dict[BeautifulSoup, BeautifulSoup]]:
+    def to_dicts(self) -> list[dict[str, BeautifulSoup]]:
         return [dict(zip(self.headers, row)) for row in self.data]
