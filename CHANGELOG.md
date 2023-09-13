@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.5.4 (2023-09-13)
+
+#### Fixes
+
+- only remove square bracketed footnotes
+- handle blanks in `Wikitable.data`
+
+#### Refactorings
+
+- use content in `LinkedText.link` property instead of empty object
+
+#### Others
+
+- ruff ignore E731
+- add test for `Wikitable` handling ampersands
+
 ## 0.5.3 (2023-09-03)
 
 #### Fixes
