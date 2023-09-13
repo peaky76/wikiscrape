@@ -32,7 +32,7 @@ def test_linked_text_repr_with_link():
     assert repr(LinkedText(LINK_AND_TEXT)) == expected
 
 
-def test_linked_text_repr_with_link():
+def test_linked_bold_text_repr_with_link():
     expected = "<LinkedText: Foobar (https://www.alink.com)>"
     assert repr(LinkedText(BOLD_LINK_AND_TEXT)) == expected
 
