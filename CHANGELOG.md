@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.5 (2023-09-24)
+
+#### Refactorings
+
+- make `Wikipage` and `LinkedText` hashable
+
 ## 0.5.4 (2023-09-13)
 
 #### Fixes
