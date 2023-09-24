@@ -10,6 +10,9 @@ class Wikipage:
     def __eq__(self, other):
         return self.title == other.title
 
+    def __hash__(self):
+        return hash(self.title)
+
     @classmethod
     def from_url(cls, url: str):
         return cls(url.split("/")[-1].replace("_", " ").replace("%27", "'"))

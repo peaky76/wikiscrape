@@ -10,6 +10,10 @@ def test_wikipage_eq_false():
     assert Wikipage("Joe Bloggs") != Wikipage("Jane Doe")
 
 
+def test_wikipage_hash():
+    assert hash(Wikipage("Joe Bloggs")) == hash(Wikipage("Joe Bloggs"))
+
+
 def test_wikipage_from_abs_url():
     abs_url = "https://en.wikipedia.org/wiki/Joe_Bloggs"
     assert Wikipage.from_url(abs_url) == Wikipage("Joe Bloggs")
