@@ -27,6 +27,14 @@ def test_linked_text_init_with_navigable_string():
     assert LinkedText(NAVIGABLE_STRING)
 
 
+def test_linked_text_eq_with_link():
+    assert LinkedText(LINK_AND_TEXT) == LinkedText(BOLD_LINK_AND_TEXT)
+
+
+def test_linked_text_hash_with_link():
+    assert hash(LinkedText(LINK_AND_TEXT)) == hash(LinkedText(BOLD_LINK_AND_TEXT))
+
+
 def test_linked_text_repr_with_link():
     expected = "<LinkedText: Foobar (https://www.alink.com)>"
     assert repr(LinkedText(LINK_AND_TEXT)) == expected
