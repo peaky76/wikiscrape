@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.5.6 (2023-09-25)
+
+#### Fixes
+
+- handle no headers in `Wikitable`
+- handle empty headers in `Wikitable`
+
+#### Refactorings
+
+- `Wikitable.headers` intermediate vars
+
 ## 0.5.5 (2023-09-24)
 
 #### Refactorings
