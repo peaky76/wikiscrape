@@ -21,7 +21,7 @@ class Wikitable:
     def headers(self) -> list[str]:
         return [
             remove_footnotes(
-                next(el.text.strip() for el in th.contents if el.text.strip())
+                next((el.text.strip() for el in th.contents if el.text.strip()), "")
             )
             for th in self.table.find_all("th")
         ]
