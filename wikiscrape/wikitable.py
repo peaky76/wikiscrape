@@ -21,6 +21,9 @@ class Wikitable:
     def headers(self) -> list[str]:
         header_cells = self.table.find_all("th")
         header_contents = [th.contents for th in header_cells]
+        if not header_cells:
+            return [f"col_{i+1}" for i in range(len(self.data[0]))]
+
         return [
             remove_footnotes(next((el.text.strip() for el in c if el.text.strip()), ""))
             for c in header_contents
