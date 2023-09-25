@@ -33,6 +33,12 @@ def test_wikitable_headers_with_new_lines_at_end():
     assert Wikitable(table).headers == ["Header 1", "Header 2"]
 
 
+def test_wikitable_headers_with_empty_header():
+    html = "<table><tr><th></th><th>Header 2</th></tr></table>"
+    table = BeautifulSoup(html, "html.parser").table
+    assert Wikitable(table).headers == ["", "Header 2"]
+
+
 def test_wikitable_data():
     html = """
         <table>
