@@ -19,11 +19,11 @@ class Wikitable:
 
     @property
     def headers(self) -> list[str]:
+        header_cells = self.table.find_all("th")
+        header_contents = [th.contents for th in header_cells]
         return [
-            remove_footnotes(
-                next((el.text.strip() for el in th.contents if el.text.strip()), "")
-            )
-            for th in self.table.find_all("th")
+            remove_footnotes(next((el.text.strip() for el in c if el.text.strip()), ""))
+            for c in header_contents
         ]
 
     @property
