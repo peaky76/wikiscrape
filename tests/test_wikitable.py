@@ -39,6 +39,17 @@ def test_wikitable_headers_with_empty_header():
     assert Wikitable(table).headers == ["", "Header 2"]
 
 
+def test_wikitable_headers_when_headers_are_not_labelled():
+    html = """
+        <table>
+            <tr><td></td><td>Header 2</td></tr>
+            <tr><td>Data 1</td><td>Data 2</td>
+        </table>
+    """
+    table = BeautifulSoup(html, "html.parser").table
+    assert Wikitable(table).headers == ["col_1", "col_2"]
+
+
 def test_wikitable_data():
     html = """
         <table>
