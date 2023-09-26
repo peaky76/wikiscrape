@@ -32,10 +32,18 @@ HTML = """
 """
 
     
-def test_coordinates_returns_correct_latitude():
+def test_coordinates_returns_correct_latitude_when_present():
     coords = Coordinates.from_soup(BeautifulSoup(HTML, "html.parser"))
     assert coords.latitude == "52°35′52″N"
 
-def test_coordinates_returns_correct_longitude():
+def test_coordinates_returns_no_latitude_when_not_present():
+    coords = Coordinates.from_soup(BeautifulSoup("<span>No coordinates here</span", "html.parser"))
+    assert coords.latitude == None
+
+def test_coordinates_returns_correct_longitude_when_present():
     coords = Coordinates.from_soup(BeautifulSoup(HTML, "html.parser"))
     assert coords.longitude == "1°5′45″W"
+
+def test_coordinates_returns_correct_longitude_when_present():
+    coords = Coordinates.from_soup(BeautifulSoup("<span>No coordinates here</span", "html.parser"))
+    assert coords.longitude == None
