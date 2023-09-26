@@ -11,8 +11,8 @@ class Coordinates:
 
     @property
     def latitude(self):
-        return self.coords.find("span", {"class": "latitude"}).text
+        return self.coords.find("span", {"class": "latitude"}).text if self.coords else None
 
     @property
     def longitude(self):
-        return self.coords.find("span", {"class": "longitude"}).text
+        return self.coords.find("span", {"class": "longitude"}).text if self.coords else None
