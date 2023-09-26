@@ -9,6 +9,10 @@ class Coordinates:
     def from_soup(cls, soup: BeautifulSoup):
         return cls(soup.find("span", {"class": "geo-dms"}))
 
+    @classmethod
+    def from_html(cls, html: str):
+        return cls(BeautifulSoup(html, "html.parser").find("span", {"class": "geo-dms"}))
+
     @property
     def latitude(self):
         return self.coords.find("span", {"class": "latitude"}).text if self.coords else None

@@ -31,6 +31,13 @@ HTML = """
 	</div>
 """
 
+def test_coordinates_from_soup():
+    coords = Coordinates.from_soup(BeautifulSoup(HTML, "html.parser"))
+    assert coords.coords
+
+def test_coordinates_from_html():
+    coords = Coordinates.from_html(HTML)
+    assert coords.coords    
     
 def test_coordinates_returns_correct_latitude_when_present():
     coords = Coordinates.from_soup(BeautifulSoup(HTML, "html.parser"))
