@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.6.1 (2023-09-27)
+
+#### Refactorings
+
+- `Wikitable.from_title` class method
+- ruff autofixes
+
+#### Others
+
+- fix duplicate test name
+
 ## 0.6.0 (2023-09-27)
 
 #### New Features
