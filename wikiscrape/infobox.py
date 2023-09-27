@@ -4,6 +4,8 @@ from .wikitable import Wikitable
 
 
 class Infobox(Wikitable):
+    _identifier = {"class": "infobox"}
+
     @property
     def data(self) -> list[list[BeautifulSoup]]:
         return [
