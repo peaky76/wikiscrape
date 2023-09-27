@@ -15,6 +15,27 @@ def test_remove_footnotes_removes_double_dagger():
     assert remove_footnotes("Hello World\u2021") == "Hello World"
 
 
+def test_wikitable_from_title():
+    html = """
+        <h2>Table A</h2>
+        <table>
+            <tr>
+                <th>Header 1A</th>
+                <th>Header 2A</th>
+            </tr>
+        </table>
+        <h2>Table B</h2>
+        <table>
+            <tr>
+                <th>Header 1B</th>
+                <th>Header 2B</th>
+            </tr>
+        </table>
+    """
+    table = Wikitable.from_title("Table B", html)
+    assert table.headers == ["Header 1B", "Header 2B"]
+
+
 def test_wikitable_headers():
     html = "<table><tr><th>Header 1</th><th>Header 2</th></tr></table>"
     table = Wikitable.from_html(html)

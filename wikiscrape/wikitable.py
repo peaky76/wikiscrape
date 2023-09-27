@@ -17,6 +17,17 @@ def remove_footnotes(text: str) -> str:
 class Wikitable(Wikiobject):
     _html_tag = "table"
 
+    @classmethod
+    def from_title(cls, title: str, html: str) -> "Wikitable":
+        all_titles = BeautifulSoup(html, "html.parser").find_all("h2")
+        tag = [tag for tag in all_titles if tag.text == title][0]
+
+        if not tag:
+            raise ValueError(f"Title {tag} not found in html")
+
+        table = tag.find_next_sibling("table")
+        return cls.from_html(str(table))
+
     @property
     def headers(self) -> list[str]:
         header_contents = [
