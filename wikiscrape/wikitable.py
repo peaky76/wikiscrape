@@ -1,6 +1,7 @@
 import re
 import typing
 from bs4 import BeautifulSoup
+from .wikiobject import Wikiobject
 
 FOOTNOTE = r"(\[)(\w+|\d+)(\])"
 DAGGER = "\u2020"
@@ -13,7 +14,9 @@ def remove_footnotes(text: str) -> str:
     ).strip()
 
 
-class Wikitable:
+class Wikitable(Wikiobject):
+    _html_tag = "table"
+
     def __init__(self, table):
         self.table = table
 
