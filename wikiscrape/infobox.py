@@ -13,7 +13,7 @@ class Infobox(Wikitable):
                 contents[0]
                 if len(contents := tr.td.contents) == 1
                 else BeautifulSoup("".join(str(x) for x in contents), "html.parser")
-                for tr in self.table.find_all("tr")
+                for tr in self.value.find_all("tr")
                 if tr.th
             ]
         ]

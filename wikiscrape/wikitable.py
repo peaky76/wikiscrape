@@ -17,9 +17,6 @@ def remove_footnotes(text: str) -> str:
 class Wikitable(Wikiobject):
     _html_tag = "table"
 
-    def __init__(self, table):
-        self.table = table
-
     @property
     def headers(self) -> list[str]:
         header_contents = [
@@ -60,7 +57,7 @@ class Wikitable(Wikiobject):
 
     @property
     def rows(self) -> list[BeautifulSoup]:
-        return self.table.find_all("tr")
+        return self.value.find_all("tr")
 
     def to_dicts(self) -> list[dict[str, BeautifulSoup]]:
         return [dict(zip(self.headers, row)) for row in self.data]
