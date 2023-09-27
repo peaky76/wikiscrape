@@ -59,7 +59,7 @@ def test_coordinates_returns_correct_longitude_when_present():
     assert coords.longitude == "1°5′45″W"
 
 
-def test_coordinates_returns_correct_longitude_when_present():
+def test_coordinates_returns_no_longitude_when_not_present():
     coords = Coordinates.from_soup(
         BeautifulSoup("<span>No coordinates here</span", "html.parser")
     )
