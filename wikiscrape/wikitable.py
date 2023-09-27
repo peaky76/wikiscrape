@@ -46,9 +46,16 @@ class Wikitable(Wikiobject):
                 else de_footnoted_soup("".join(str(x) for x in td.contents))
                 for td in tr.find_all("td")
             ]
-            for tr in self.rows
-            if not tr.th
+            for tr in self.data_rows
         ]
+
+    @property
+    def data_rows(self) -> list[BeautifulSoup]:
+        return [row for row in self.rows if not row.th]
+
+    @property
+    def header_rows(self) -> list[BeautifulSoup]:
+        return [row for row in self.rows if row.th]
 
     @property
     def rows(self) -> list[BeautifulSoup]:
