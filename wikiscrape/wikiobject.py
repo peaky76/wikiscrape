@@ -10,7 +10,7 @@ class Wikiobject:
 
     def __new__(cls, *args, **kwargs):
         if cls == Wikiobject:
-            raise NotImplementedError(f"Wikiobject should not be created directly")
+            raise NotImplementedError("Wikiobject should not be created directly")
 
         return super().__new__(cls)
 

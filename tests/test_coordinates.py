@@ -51,7 +51,7 @@ def test_coordinates_returns_no_latitude_when_not_present():
     coords = Coordinates.from_soup(
         BeautifulSoup("<span>No coordinates here</span", "html.parser")
     )
-    assert coords.latitude == None
+    assert coords.latitude is None
 
 
 def test_coordinates_returns_correct_longitude_when_present():
@@ -63,4 +63,4 @@ def test_coordinates_returns_correct_longitude_when_present():
     coords = Coordinates.from_soup(
         BeautifulSoup("<span>No coordinates here</span", "html.parser")
     )
-    assert coords.longitude == None
+    assert coords.longitude is None
