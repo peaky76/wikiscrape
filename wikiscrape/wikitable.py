@@ -22,9 +22,10 @@ class Wikitable(Wikiobject):
 
     @property
     def headers(self) -> list[str]:
-        header_cells = self.table.find_all("th")
-        header_contents = [th.contents for th in header_cells]
-        if not header_cells:
+        header_contents = [
+            th.contents for row in self.header_rows for th in row.find_all("th")
+        ]
+        if not header_contents:
             return [f"col_{i+1}" for i in range(len(self.data[0]))]
 
         return [
