@@ -23,15 +23,15 @@ HTML = """
         </table>
     """
 
-TABLE = BeautifulSoup(HTML, "html.parser").table
+INFOBOX = Infobox.from_html(HTML) 
 
 
 def test_infobox_headers():
-    assert Infobox(TABLE).headers == ["Name", "Birthdate", "Websites"]
+    assert INFOBOX.headers == ["Name", "Birthdate", "Websites"]
 
 
 def test_infobox_data():
-    assert Infobox(TABLE).data == [
+    assert INFOBOX.data == [
         [
             "John Doe",
             "1 August 1950",
@@ -44,7 +44,7 @@ def test_infobox_data():
 
 
 def test_infobox_to_dicts():
-    assert Infobox(TABLE).to_dicts() == [
+    assert INFOBOX.to_dicts() == [
         {
             "Name": "John Doe",
             "Birthdate": "1 August 1950",
