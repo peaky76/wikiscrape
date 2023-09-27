@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.6.0 (2023-09-27)
+
+#### New Features
+
+- create `Coordinates` class
+
+#### Refactorings
+
+- create `Wikiobject` abstract base class
+- `Wikiobject.from_html` class method
+- `Wikiobject.from_soup` class method
+- `Coordinates` as `Wikiobject` subclass
+- `Wikitable` as `Wikiobject` subclass
+- `Wikitable.rows` property
+- `Wikitable.data_rows` and `.header_rows`
+
 ## 0.5.6 (2023-09-25)
 
 #### Fixes
