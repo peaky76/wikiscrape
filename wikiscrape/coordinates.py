@@ -1,17 +1,12 @@
 from bs4 import BeautifulSoup
+from .wikiobject import Wikiobject
 
-class Coordinates:
+class Coordinates(Wikiobject):
+    _html_tag = "span"
+    _identifier = {"class": "geo-dms"}
 
     def __init__(self, coords):
         self.coords = coords
-
-    @classmethod
-    def from_soup(cls, soup: BeautifulSoup):
-        return cls(soup.find("span", {"class": "geo-dms"}))
-
-    @classmethod
-    def from_html(cls, html: str):
-        return cls(BeautifulSoup(html, "html.parser").find("span", {"class": "geo-dms"}))
 
     @property
     def latitude(self):
