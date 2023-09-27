@@ -2,6 +2,8 @@ from bs4 import BeautifulSoup
 from wikiscrape import Infobox
 
 HTML = """
+        <table class="some_other_table">
+        </table>
         <table class="infobox">
             <tbody>
                 <tr>
@@ -23,7 +25,7 @@ HTML = """
         </table>
     """
 
-INFOBOX = Infobox.from_html(HTML) 
+INFOBOX = Infobox.from_html(HTML)
 
 
 def test_infobox_headers():
