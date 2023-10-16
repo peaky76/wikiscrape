@@ -16,7 +16,7 @@ class LinkedText:
 
     @property
     def link(self):
-        if isinstance(self.content, NavigableString):
+        if isinstance(self.content, NavigableString) or not self.content:
             return None
         return (self.content.a or self.content).get("href")
 
