@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.7.0 (2023-10-16)
+
+#### New Features
+
+- `Header` class
+
+#### Fixes
+
+- extra guard in `LinkedText`
+
+#### Refactorings
+
+- move `de_footnoted_soup` to separate function
+
 ## 0.6.1 (2023-09-27)
 
 #### Refactorings
