@@ -8,6 +8,10 @@ DAGGER = "\u2020"
 DOUBLE_DAGGER = "\u2021"
 
 
+def de_footnoted_soup(x: BeautifulSoup) -> BeautifulSoup:
+    return BeautifulSoup(remove_footnotes(str(x)), "html.parser")
+
+
 def remove_footnotes(text: str) -> str:
     return re.sub(
         FOOTNOTE, "", text.replace(DAGGER, "").replace(DOUBLE_DAGGER, "")
@@ -44,10 +48,6 @@ class Wikitable(Wikiobject):
     @property
     @typing.no_type_check
     def data(self) -> list[list[BeautifulSoup]]:
-        de_footnoted_soup = lambda x: BeautifulSoup(
-            remove_footnotes(str(x)), "html.parser"
-        )
-
         return [
             [
                 de_footnoted_soup(str(td.contents[0])).contents[0]
