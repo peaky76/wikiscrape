@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 
 
 class Wikiobject:
-    _html_tag: str = None
+    _html_tag: str | None = None
     _identifier: dict[str, str] = {}
 
     def __init__(self, value):
