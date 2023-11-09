@@ -34,26 +34,32 @@ def test_infobox_headers():
 
 
 def test_infobox_data():
-    assert INFOBOX.data == [
-        [
-            "John Doe",
-            "1 August 1950",
-            BeautifulSoup(
-                "<a href='https://johndoe.com'>johndoe.com</a> and <a href='https://anothersite.com'>anothersite.com</a>",
-                "html.parser",
-            ),
+    assert (
+        INFOBOX.data
+        == [
+            [
+                "John Doe",
+                "1 August 1950",
+                BeautifulSoup(
+                    "<a href='https://johndoe.com'>johndoe.com</a> and <a href='https://anothersite.com'>anothersite.com</a>",
+                    "html.parser",
+                ),
+            ]
         ]
-    ]
+    )
 
 
 def test_infobox_to_dicts():
-    assert INFOBOX.to_dicts() == [
-        {
-            "Name": "John Doe",
-            "Birthdate": "1 August 1950",
-            "Websites": BeautifulSoup(
-                "<a href='https://johndoe.com'>johndoe.com</a> and <a href='https://anothersite.com'>anothersite.com</a>",
-                "html.parser",
-            ),
-        }
-    ]
+    assert (
+        INFOBOX.to_dicts()
+        == [
+            {
+                "Name": "John Doe",
+                "Birthdate": "1 August 1950",
+                "Websites": BeautifulSoup(
+                    "<a href='https://johndoe.com'>johndoe.com</a> and <a href='https://anothersite.com'>anothersite.com</a>",
+                    "html.parser",
+                ),
+            }
+        ]
+    )
