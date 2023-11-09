@@ -26,7 +26,7 @@ class Wikitable(Wikiobject):
     @classmethod
     def from_title(cls, title: str, html: str) -> "Wikitable":
         all_titles = BeautifulSoup(html, "html.parser").find_all("h2")
-        tag = [tag for tag in all_titles if tag.text == title][0]
+        tag = next(tag for tag in all_titles if tag.text == title)
 
         if not tag:
             raise ValueError(f"Title {tag} not found in html")
