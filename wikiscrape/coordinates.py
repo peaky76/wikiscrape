@@ -1,9 +1,11 @@
+from typing import ClassVar
+
 from .wikiobject import Wikiobject
 
 
 class Coordinates(Wikiobject):
     _html_tag = "span"
-    _identifier = {"class": "geo-dms"}
+    _identifier: ClassVar[dict] = {"class": "geo-dms"}
 
     @property
     def latitude(self):

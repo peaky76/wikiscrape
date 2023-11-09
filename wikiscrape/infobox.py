@@ -1,10 +1,12 @@
+from typing import ClassVar
+
 from bs4 import BeautifulSoup
 
 from .wikitable import Wikitable
 
 
 class Infobox(Wikitable):
-    _identifier = {"class": "infobox"}
+    _identifier: ClassVar[dict] = {"class": "infobox"}
 
     @property
     def data(self) -> list[list[BeautifulSoup]]:
