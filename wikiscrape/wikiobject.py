@@ -1,9 +1,11 @@
+from typing import ClassVar
+
 from bs4 import BeautifulSoup
 
 
 class Wikiobject:
     _html_tag: str | None = None
-    _identifier: dict[str, str] = {}
+    _identifier: ClassVar[dict[str, str]] = {}
 
     def __init__(self, value):
         self.value = value
