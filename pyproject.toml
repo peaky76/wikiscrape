@@ -26,7 +26,37 @@ types-requests = "^2.31.0.2"
 types-beautifulsoup4 = "^4.12.0.5"
 
 [tool.ruff]
-ignore = ["E501", "E731"]
+select = [
+    "E", # pycodestyle Error
+    "F", # pyflakes
+    "C90", # mccabe
+    "I", # isort
+    "N", # pep8-naming
+    "UP", # pyupgrade
+    "FBT", # flake8-boolean-trap
+    "C4", # flake8-comprehensions
+    "PYI", # flake8-pyi
+    "PT", # flake8-pytest-style
+    "RSE", # flake8-raise
+    "RET", # flake8-return
+    "SIM", # flake8-simplify
+    "PTH", # flake8-use-pathlib
+    "PERF", # perflint
+    "FURB", # refurb
+    "RUF", # ruff specific
+
+]
+ignore = [
+    "E501",
+    "E731",
+    # Temporary overrides
+    "I001",
+    "N806",
+    "N813",
+    "RUF001",
+    "RUF012",
+    "RUF015",
+]
 
 [build-system]
 requires = ["poetry-core"]
