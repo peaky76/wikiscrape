@@ -20,7 +20,7 @@ class Wikipage:
 
     @property
     def abs_url(self) -> str:
-        EN_WIKI = "https://en.wikipedia.org/wiki/"
+        EN_WIKI = "https://en.wikipedia.org/wiki/"  # noqa: N806
         return EN_WIKI + self.rel_url
 
     @property
