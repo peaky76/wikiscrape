@@ -1,6 +1,8 @@
 import re
 import typing
+
 from bs4 import BeautifulSoup
+
 from .wikiobject import Wikiobject
 
 FOOTNOTE = r"(\[)(\w+|\d+)(\])"

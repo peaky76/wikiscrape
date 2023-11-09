@@ -1,4 +1,5 @@
 from bs4 import BeautifulSoup
+
 from wikiscrape import LinkedText
 
 LINK_AND_TEXT = BeautifulSoup(
