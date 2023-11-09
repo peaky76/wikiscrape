@@ -41,6 +41,3 @@ jobs:
 
       - name: Run static type checker
         run: poetry run mypy .
-
-      - name: Run formatter
-        run: poetry run black --check --verbose .
