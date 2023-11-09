@@ -1,4 +1,4 @@
-from wikiscrape import Markdown as md
+from wikiscrape import Markdown as md  # noqa: N813
 
 
 def test_markdown_a_without_alias():

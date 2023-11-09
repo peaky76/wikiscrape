@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-from .markdown import Markdown as md
+from .markdown import Markdown as md  # noqa: N813
 
 
 class Wikipage:
