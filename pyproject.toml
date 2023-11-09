@@ -50,7 +50,6 @@ ignore = [
     "E501",
     "E731",
     # Temporary overrides
-    "I001",
     "N806",
     "N813",
     "RUF001",
