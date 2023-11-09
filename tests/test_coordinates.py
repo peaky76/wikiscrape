@@ -30,7 +30,7 @@ HTML = """
             </div>
         </div>
 	</div>
-"""
+"""  # noqa: RUF001
 
 
 def test_coordinates_from_soup():
@@ -45,7 +45,7 @@ def test_coordinates_from_html():
 
 def test_coordinates_returns_correct_latitude_when_present():
     coords = Coordinates.from_soup(BeautifulSoup(HTML, "html.parser"))
-    assert coords.latitude == "52°35′52″N"
+    assert coords.latitude == "52°35′52″N"  # noqa: RUF001
 
 
 def test_coordinates_returns_no_latitude_when_not_present():
@@ -57,7 +57,7 @@ def test_coordinates_returns_no_latitude_when_not_present():
 
 def test_coordinates_returns_correct_longitude_when_present():
     coords = Coordinates.from_soup(BeautifulSoup(HTML, "html.parser"))
-    assert coords.longitude == "1°5′45″W"
+    assert coords.longitude == "1°5′45″W"  # noqa: RUF001
 
 
 def test_coordinates_returns_no_longitude_when_not_present():
