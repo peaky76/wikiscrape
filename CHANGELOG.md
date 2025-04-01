@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.7.1 (2025-04-01)
+
+#### Fixes
+
+* Wikitable only finds tables with wikitable class
+
+#### Refactorings
+
+* fix RUF015 next over single el slice
+
+#### Others
+
+* reduce dependabot to weekly
+* group dev deps in dependabot
+* ruff reformatting
+
 ## 0.7.0 (2023-10-16)
 
 #### New Features
