@@ -22,6 +22,7 @@ def remove_footnotes(text: str) -> str:
 
 class Wikitable(Wikiobject):
     _html_tag = "table"
+    _identifier: typing.ClassVar[dict[str, str]] = {"class": "wikitable"}
 
     @classmethod
     def from_title(cls, title: str, html: str) -> "Wikitable":

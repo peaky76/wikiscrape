@@ -19,14 +19,14 @@ def test_remove_footnotes_removes_double_dagger():
 def test_wikitable_from_title():
     html = """
         <h2>Table A</h2>
-        <table>
+        <table class="wikitable">
             <tr>
                 <th>Header 1A</th>
                 <th>Header 2A</th>
             </tr>
         </table>
         <h2>Table B</h2>
-        <table>
+        <table class="wikitable">
             <tr>
                 <th>Header 1B</th>
                 <th>Header 2B</th>
@@ -37,33 +37,58 @@ def test_wikitable_from_title():
     assert table.headers == ["Header 1B", "Header 2B"]
 
 
+def test_wikitable_with_non_wikitable():
+    html = """
+        <h2>Table A</h2>
+        <table>
+            <tr>
+                <th>Header 1A</th>
+                <th>Header 2A</th>
+            </tr>
+        </table>
+        <h2>Table B</h2>
+        <table class="wikitable">
+            <tr>
+                <th>Header 1B</th>
+                <th>Header 2B</th>
+            </tr>
+        </table>
+    """
+    table = Wikitable.from_html(html)
+    assert table.headers == ["Header 1B", "Header 2B"]
+
+
 def test_wikitable_headers():
-    html = "<table><tr><th>Header 1</th><th>Header 2</th></tr></table>"
+    html = (
+        "<table class='wikitable'><tr><th>Header 1</th><th>Header 2</th></tr></table>"
+    )
     table = Wikitable.from_html(html)
     assert table.headers == ["Header 1", "Header 2"]
 
 
 def test_wikitable_headers_with_new_lines_at_beginning():
-    html = "<table><tr><th>\n<span>Header 1</span></th><th>Header 2</th></tr></table>"
+    html = "<table class='wikitable'><tr><th>\n<span>Header 1</span></th><th>Header 2</th></tr></table>"
     table = Wikitable.from_html(html)
     assert table.headers == ["Header 1", "Header 2"]
 
 
 def test_wikitable_headers_with_new_lines_at_end():
-    html = "<table><tr><th>Header 1</th><th>Header 2\n</th></tr></table>"
+    html = (
+        "<table class='wikitable'><tr><th>Header 1</th><th>Header 2\n</th></tr></table>"
+    )
     table = Wikitable.from_html(html)
     assert table.headers == ["Header 1", "Header 2"]
 
 
 def test_wikitable_headers_with_empty_header():
-    html = "<table><tr><th></th><th>Header 2</th></tr></table>"
+    html = "<table class='wikitable'><tr><th></th><th>Header 2</th></tr></table>"
     table = Wikitable.from_html(html)
     assert table.headers == ["", "Header 2"]
 
 
 def test_wikitable_headers_when_headers_are_not_labelled():
     html = """
-        <table>
+        <table class='wikitable'>
             <tr><td></td><td>Header 2</td></tr>
             <tr><td>Data 1</td><td>Data 2</td>
         </table>
@@ -74,7 +99,7 @@ def test_wikitable_headers_when_headers_are_not_labelled():
 
 def test_wikitable_data():
     html = """
-        <table>
+        <table class='wikitable'>
             <tr><th>Header 1</th><th>Header 2</th></tr>
             <tr><td>Data A1</td><td>Data A2</td></tr>
             <tr><td>Data B1</td><td>Data B2</td></tr>
@@ -86,7 +111,7 @@ def test_wikitable_data():
 
 def test_wikitable_data_handles_footnotes():
     html = """
-        <table>
+        <table class='wikitable'>
             <tr><th>Header 1</th><th>Header 2</th></tr>
             <tr><td>Data A1[a]</td><td>Data A2‡</td></tr>
             <tr><td>Data B1</td><td>Data B2</td></tr>
@@ -98,7 +123,7 @@ def test_wikitable_data_handles_footnotes():
 
 def test_wikitable_data_handles_ampersands():
     html = """
-        <table>
+        <table class='wikitable'>
             <tr><th>Header 1[a]</th><th>Header 2</th></tr>
             <tr><td>Data A1</td><td>Data A2&A3</td></tr>
             <tr><td>Data B1</td><td>Data B2</td></tr>
@@ -110,7 +135,7 @@ def test_wikitable_data_handles_ampersands():
 
 def test_wikitable_data_handles_links():
     html = """
-        <table>
+        <table class='wikitable'>
             <tr><th>Header 1</th><th>Header 2</th></tr>
             <tr><td><a href='http://www.dataa1.com'>Data A1</a></td><td>Data A2</td></tr>
             <tr><td>Data B1</td><td><a href='http://www.datab2.com'>Data B2</a></td></tr>
@@ -122,7 +147,7 @@ def test_wikitable_data_handles_links():
 
 def test_wikitable_data_handles_blanks():
     html = """
-        <table>
+        <table class='wikitable'>
             <tr><th>Header 1</th><th>Header 2</th></tr>
             <tr><td></td><td>Data A2</td></tr>
             <tr><td>Data B1</td><td>\n</td></tr>
@@ -134,7 +159,7 @@ def test_wikitable_data_handles_blanks():
 
 def test_wikitable_data_handles_links_with_footnotes():
     html = """
-        <table>
+        <table class='wikitable'>
             <tr><th>Header 1</th><th>Header 2</th></tr>
             <tr><td><a href='http://www.dataa1.com'>Data A1‡</a></td><td>Data A2</td></tr>
             <tr><td>Data B1</td><td><a href='http://www.datab2.com'>Data B2</a></td></tr>
@@ -147,7 +172,7 @@ def test_wikitable_data_handles_links_with_footnotes():
 
 def test_wikitable_data_handles_multiple_elements():
     html = """
-        <table>
+        <table class='wikitable'>
             <tr><th>Header 1</th><th>Header 2</th></tr>
             <tr><td><a href='http://www.dataa1.com'>Data A1</a> <a href='http://www.dataaa1.com'>Data AA1</a></td><td>Data A2</td></tr>
             <tr><td>Data B1</td><td><a href='http://www.datab2.com'>Data B2</a></td></tr>
@@ -163,7 +188,7 @@ def test_wikitable_data_handles_multiple_elements():
 
 def test_wikitable_to_dicts():
     html = """
-        <table>
+        <table class='wikitable'>
             <tr><th>Header 1</th><th>Header 2</th></tr>
             <tr><td>Data A1</td><td>Data A2</td></tr>
             <tr><td>Data B1</td><td>Data B2</td></tr>
