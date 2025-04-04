@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.8.0 (2025-04-04)
+
+#### New Features
+
+* `Wikiobject.parent_heading` method
+
+#### Fixes
+
+* `Wikitable.from_title` works with new wikipedia headings
+
 ## 0.7.1 (2025-04-01)
 
 #### Fixes
