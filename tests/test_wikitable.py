@@ -37,6 +37,22 @@ def test_wikitable_from_title():
     assert table.headers == ["Header 1B", "Header 2B"]
 
 
+def test_wikitable_from_title_with_div_based_headers():
+    html = """
+        <div class="mw-heading mw-heading2">
+            <h2>Table A</h2>
+        </div>
+        <table class="wikitable">
+            <tr>
+                <th>Header 1A</th>
+                <th>Header 2A</th>
+            </tr>
+        </table>
+    """
+    table = Wikitable.from_title("Table A", html)
+    assert table.headers == ["Header 1A", "Header 2A"]
+
+
 def test_wikitable_from_html():
     html = """
         <h2>Table A</h2>
