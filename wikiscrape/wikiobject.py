@@ -24,3 +24,13 @@ class Wikiobject:
     @classmethod
     def from_soup(cls, soup: BeautifulSoup):
         return cls(soup.find(cls._html_tag, cls._identifier))
+
+    @property
+    def parent_heading(self):
+        heading_div = self.value.find_previous_sibling("div")
+        heading = (
+            heading_div.find("h2")
+            if heading_div
+            else self.value.find_previous_sibling("h2")
+        )
+        return heading.text if heading else None
