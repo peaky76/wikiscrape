@@ -32,7 +32,9 @@ class Wikitable(Wikiobject):
         if not tag:
             raise ValueError(f"Title {tag} not found in html")
 
-        table = tag.find_next_sibling("table")
+        parent_classes = tag.parent.get("class", [])
+        sibling_object = tag.parent if "mw-heading" in parent_classes else tag
+        table = sibling_object.find_next_sibling("table")
         return cls.from_html(str(table))
 
     @property
