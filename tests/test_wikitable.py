@@ -37,7 +37,7 @@ def test_wikitable_from_title():
     assert table.headers == ["Header 1B", "Header 2B"]
 
 
-def test_wikitable_with_non_wikitable():
+def test_wikitable_from_html():
     html = """
         <h2>Table A</h2>
         <table>
