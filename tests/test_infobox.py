@@ -52,6 +52,28 @@ STACKED_HTML = """
 
 STACKED_INFOBOX = Infobox.from_html(STACKED_HTML)
 
+HEADED_HTML = """
+        <table class="some_other_table">
+        </table>
+        <table class="infobox">
+            <tbody>
+                <tr>
+                    <th>John Doe</th>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <td>John Doe</td>
+                </tr>
+                <tr>
+                    <th>Birthdate</th>
+                    <td>1 August 1950</td>
+                </tr>
+            </tbody>
+        </table>
+    """
+
+HEADED_INFOBOX = Infobox.from_html(HEADED_HTML)
+
 
 def test_infobox_headers():
     assert BASIC_INFOBOX.headers == ["Name", "Birthdate", "Websites"]
@@ -99,6 +121,30 @@ def test_infobox_data_when_stacked():
 def test_infobox_to_dicts_when_stacked():
     assert STACKED_INFOBOX.to_dicts() == [
         {
+            "Name": "John Doe",
+            "Birthdate": "1 August 1950",
+        }
+    ]
+
+
+def test_infobox_headers_when_headed():
+    assert HEADED_INFOBOX.headers == ["John Doe", "Name", "Birthdate"]
+
+
+def test_infobox_data_when_headed():
+    assert HEADED_INFOBOX.data == [
+        [
+            None,
+            "John Doe",
+            "1 August 1950",
+        ]
+    ]
+
+
+def test_infobox_to_dicts_when_headed():
+    assert HEADED_INFOBOX.to_dicts() == [
+        {
+            "John Doe": None,
             "Name": "John Doe",
             "Birthdate": "1 August 1950",
         }
