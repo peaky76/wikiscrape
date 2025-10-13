@@ -10,12 +10,23 @@ class Infobox(Wikitable):
 
     @property
     def data(self) -> list[list[BeautifulSoup]]:
+        extract_value = (
+            lambda tr: tr.td.contents[0]
+            if len(tr.td.contents) == 1
+            else BeautifulSoup("".join(str(x) for x in tr.td.contents), "html.parser")
+        )
+        get_next_row_value = (
+            lambda i: extract_value(self.rows[i + 1])
+            if i + 1 < len(self.rows)
+            and self.rows[i + 1].td
+            and not self.rows[i + 1].th
+            else None
+        )
+
         return [
             [
-                contents[0]
-                if len(contents := tr.td.contents) == 1
-                else BeautifulSoup("".join(str(x) for x in contents), "html.parser")
-                for tr in self.value.find_all("tr")
+                extract_value(tr) if tr.td else get_next_row_value(i)
+                for i, tr in enumerate(self.rows)
                 if tr.th
             ]
         ]
