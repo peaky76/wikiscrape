@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.9.0 (2025-10-13)
+
+#### New Features
+
+* handle stacked data in `Infobox`
+
 ## 0.8.0 (2025-04-04)
 
 #### New Features
