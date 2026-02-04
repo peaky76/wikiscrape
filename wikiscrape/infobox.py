@@ -9,7 +9,7 @@ class Infobox(Wikitable):
     _identifier: ClassVar[dict] = {"class": "infobox"}
 
     @property
-    def data(self) -> list[list[BeautifulSoup]]:
+    def data(self) -> list[list[BeautifulSoup | None]]:
         extract_value = (
             lambda tr: tr.td.contents[0]
             if len(tr.td.contents) == 1
